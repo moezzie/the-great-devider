@@ -18,21 +18,6 @@ func TestCreateGrid(t *testing.T) {
     }
 }
 
-func TestGridFromData(t *testing.T) {
-   
-   expected_num_images  := 7500
-   sub_images, err      := GridFromData()
-
-    if err != nil {
-        t.Error(err)
-    }
-
-    if len(sub_images) < expected_num_chunks {
-        t.Error("Incorrect number of sub_images. Expected", expected_num_chunks, "got", len(sub_images))
-    }
-
-}
-
 func TestCreateSubimage(t *testing.T) {
 
     width       := 8

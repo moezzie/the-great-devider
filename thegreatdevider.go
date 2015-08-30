@@ -6,8 +6,6 @@ import(
     "image/jpeg"
     "os"
     "errors"
-    "encoding/base64"
-    "strings"
 )
 
 type Image struct {
@@ -44,14 +42,6 @@ func LoadFromFile(file_path string) (image.Image, error) {
     }
 
     return matrix, nil
-}
-
-func LoadFromData(data string) (image.Image, error) {
-    reader := base64.NewDecoder(base64.StdEncoding, strings.NewReader(data))
-    m, _, err := image.Decode(reader)
-    if err != nil {
-        log.Fatal(err)
-    }
 }
 
 func GridFromFile(file_path string, width, height int) ([]image.Image, error) {
