@@ -35,3 +35,32 @@ func TestCreateSubimage(t *testing.T) {
     }
 
 }
+
+func TestToBytes(t *testing.T) {
+
+    width, height, origin_x, origin_y := options();
+
+    sub_image, err := SubImageFromFile("testdata/testimg.png", width, height, origin_x, origin_y)
+    if err != nil {
+        t.Error(err)
+    }
+
+    bytes, err := ImageToBytes(sub_image)
+    if err != nil {
+        t.Error(err)
+    }
+
+    if len(bytes) < 1 {
+        t.Error("TestToBytes: No bytes were returned")
+    }
+
+}
+
+func options() (int, int, int, int){
+    width       := 8
+    height      := 8
+    origin_x    := 1
+    origin_y    := 1
+
+    return width, height, origin_x, origin_y
+}

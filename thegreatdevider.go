@@ -6,6 +6,7 @@ import(
     "image/jpeg"
     "os"
     "errors"
+    "bytes"
 )
 
 type Image struct {
@@ -125,5 +126,11 @@ func SubImage(matrix image.Image, width, height, origin_x, origin_y int) (image.
 
     return matrix.(SubImager).SubImage(rectangle), nil
 
+}
+
+func ImageToBytes(matrix image.Image) ([]byte, error){
+    buf := new(bytes.Buffer)
+    err := png.Encode(buf, matrix)
+    return buf.Bytes(), err
 }
 
