@@ -122,7 +122,7 @@ func SubImage(matrix image.Image, width, height, origin_x, origin_y int) (image.
         return img, errors.New("Origins X and Y of the subimage must be larger than or equal to 0 but less than the size of the source image")
     }
 
-    rectangle := image.Rect(origin_x, origin_y, width, height)
+    rectangle := image.Rect(origin_x, origin_y, origin_x + width, origin_y + height)
 
     return matrix.(SubImager).SubImage(rectangle), nil
 
